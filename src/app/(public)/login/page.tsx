@@ -1,9 +1,12 @@
 import React from 'react'
 
-
 const page = () => {
   return (
-    <div>page</div>
+    <div>
+        <h1>
+            Login Page
+        </h1>
+    </div>
   )
 }
 
