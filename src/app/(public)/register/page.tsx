@@ -3,9 +3,9 @@
 import Grid from '@mui/material/Grid'
 import Box from '@mui/material/Box'
 import Image from 'next/image'
-import LoginForm from '@/components/LoginForm'
+import RegisterForm from '@/components/RegisterForm'
 
-export default function LoginPage() {
+export default function RegisterPage() {
   return (
     <Grid container sx={{ minHeight: '100vh' }} spacing={2}>
 
@@ -18,7 +18,7 @@ export default function LoginPage() {
         >
           <Image
             src="/Mask group.svg"
-            alt="Imagem de login"
+            alt="Imagem de Registro"
             fill
             style={{ objectFit: 'cover' }}
           />
@@ -32,10 +32,9 @@ export default function LoginPage() {
         justifyContent="center"
       >
         <Box sx={{ width: '100%', maxWidth: 400, p: 4 }}>
-          <LoginForm />
+          <RegisterForm />
         </Box>
       </Grid>
-
     </Grid>
   )
 }
