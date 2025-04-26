@@ -164,7 +164,7 @@ const RegisterForm = () => {
                                 },
                             }}
                         >
-                            Criar conta
+                            Registrar
                         </Button>
                         <Button
                             fullWidth
