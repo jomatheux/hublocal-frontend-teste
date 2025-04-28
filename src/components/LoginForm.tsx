@@ -7,7 +7,7 @@ import { apiFetch } from '@/services/api';
 import { useRouter } from 'next/navigation';
 import { LoginFormData } from '@/types';
 
-const LoginForm: React.FC = () => {
+const LoginForm = () => {
     const [email, setEmail] = React.useState('')
     const [password, setPassword] = React.useState('')
     const router = useRouter()
@@ -20,7 +20,8 @@ const LoginForm: React.FC = () => {
             const response = await apiFetch('POST', 'auth/login', data)
             console.log('Login feito com sucesso:', response)
             sessionStorage.setItem('token', response.token)
-            router.push('/')
+            sessionStorage.setItem('username', response.user.name)
+            router.push('/home')
         } catch (error) {
             console.error('Falha no login:', error)
         }
