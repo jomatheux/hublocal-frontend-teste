@@ -1,8 +1,7 @@
 "use client";
-
 import { toast } from "react-toastify";
 
-const useToast = (message: string, status: string = " ") => {
+const UseToast = (message: string, status: string = " ") => {
     if(!status || status === "success"){
         toast.success(message, {
             position: "top-right",
@@ -22,4 +21,4 @@ const useToast = (message: string, status: string = " ") => {
     }
 }
 
-export default useToast;
+export default UseToast;

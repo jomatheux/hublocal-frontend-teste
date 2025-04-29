@@ -4,10 +4,9 @@ import React from 'react';
 import { Card, CardContent, TextField, Button, Box, InputLabel } from '@mui/material';
 import Image from 'next/image';
 import { apiFetch } from '@/services/api';
-import { AxiosError } from 'axios';
 import { RegisterFormData } from '@/types/index';
 import { useRouter } from 'next/navigation';
-import useToast from '@/hooks/useToast';
+import UseToast from '@/hooks/useToast';
 
 const RegisterForm = () => {
     const [name, setName] = React.useState('');
@@ -19,19 +18,19 @@ const RegisterForm = () => {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (!name || !email || !password || !confirmPassword) {
-            useToast("Preencha todos os campos", "error");
+            UseToast("Preencha todos os campos", "error");
             return;
         }
         if (!/^\S+@\S+\.\S+$/.test(email)) {
-            useToast("E-mail inválido", "error");
+            UseToast("E-mail inválido", "error");
             return;
         }
         if (password !== confirmPassword) {
-            useToast("As senhas não coincidem", "error");
+            UseToast("As senhas não coincidem", "error");
             return;
         }
         if (password.length < 6) {
-            useToast("A senha deve ter pelo menos 6 caracteres", "error");
+            UseToast("A senha deve ter pelo menos 6 caracteres", "error");
             return;
         }
         const data: RegisterFormData = { name, email, password, confirmPassword };
@@ -40,9 +39,9 @@ const RegisterForm = () => {
             const response = await apiFetch('POST', 'auth/register', data);
             console.log('Registration successful:', response.message);
             router.push('/login');
-        } catch (error: AxiosError | Error | unknown) {
+        } catch (error: Error | unknown) {
             console.error('Registration failed:', error);
-            useToast(error instanceof Error ? error.message : String(error), "error");
+            UseToast(error instanceof Error ? error.message : String(error), "error");
             alert('Erro ao realizar cadastro!');
         }
     };

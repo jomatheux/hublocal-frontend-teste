@@ -178,7 +178,7 @@ const AddLocationModal: React.FC<{
                                     id={field}
                                     variant="outlined"
                                     fullWidth
-                                    value={(data as any)[field]}
+                                    value={data[field as keyof LocationFormData]}
                                     onChange={(e) => handleChange(field as keyof LocationFormData, e.target.value)}
                                     sx={inputStyle}
                                     error={field === 'cep' && !!data.cep && !isValidCEP(data.cep)}

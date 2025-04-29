@@ -7,7 +7,6 @@ import { LocationFormData, Location } from '@/types'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import { styled } from '@mui/material/styles'
-import DeleteCompanyModal from '@/components/DeleteCompanyModal'
 import AddLocationModal from '@/components/AddLocationModal'
 import { fetchLocationsGetById } from '@/services/fetchLocations'
 import { useLocationStore } from '@/store/location'
@@ -32,7 +31,7 @@ const CenteredBox = styled(Box)`
     font-family: 'Poppins';
   `
 
-const page = () => {
+const Page = () => {
   const { companyId } = useParams();
   const { fetchLocations, locations } = useLocationStore();
   const { fetchCompany, company } = useCompanyStore();
@@ -75,7 +74,6 @@ const page = () => {
       setLocationId(id);
       fetchLocationsGetById(companyId, id).then((response) => {
         const {
-          id,
           name,
           cep,
           street,
@@ -105,7 +103,6 @@ const page = () => {
       setLocationId(id);
       fetchLocationsGetById(companyId, id).then((response) => {
         const {
-          id,
           name,
           cep,
           street,
@@ -268,5 +265,5 @@ const page = () => {
   );
 };
 
-export default page
+export default Page
 

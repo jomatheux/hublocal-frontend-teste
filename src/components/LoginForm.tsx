@@ -13,19 +13,30 @@ const LoginForm = () => {
     const router = useRouter()
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
-        const data: LoginFormData = { email, password }
+        e.preventDefault();
+        const data: LoginFormData = { email, password };
 
         try {
-            const response = await apiFetch('POST', 'auth/login', data)
-            console.log('Login feito com sucesso:', response)
-            sessionStorage.setItem('token', response.token)
-            sessionStorage.setItem('username', response.user.name)
-            router.push('/home')
-        } catch (error) {
-            console.error('Falha no login:', error)
+            const response = await apiFetch('POST', 'auth/login', data);
+            if (response.error) {
+                throw new Error(response.error);
+            }
+            console.log('Login feito com sucesso:', response);
+
+            if (typeof window !== 'undefined') {
+                sessionStorage.setItem('token', response.token);
+                sessionStorage.setItem('username', response.user.name);
+            }
+
+            router.push('/home');
+        } catch (error: unknown | Error) {
+            if (error instanceof Error) {
+                console.error('Falha no login:', error.message);
+            } else {
+                console.error('Falha no login:', error);
+            }
         }
-    }
+    };
 
     return (
         <Card elevation={0} sx={{ border: 'none' }}>

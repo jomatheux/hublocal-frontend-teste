@@ -1,12 +1,11 @@
 "use client";
 
 import React, { useState } from 'react';
-import { AppBar, Box, IconButton, Menu, MenuItem, Toolbar, Typography } from '@mui/material';
+import { AppBar, Box, Menu, MenuItem, Typography } from '@mui/material';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import BusinessIcon from '@mui/icons-material/Business';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { useRouter } from 'next/navigation'
-import { title } from 'process';
+import { useRouter } from 'next/navigation';
 
 const HeaderProps = {
   title: 'Minhas Empresas',
@@ -24,13 +23,13 @@ const Header = ({ title, isHome = false }: HeaderProps) => {
   const open = Boolean(anchorEl);
   const openTwo = Boolean(anchorElTwo);
   const router = useRouter();
-  const username = sessionStorage.getItem('username');
+  const username = typeof window !== 'undefined' ? sessionStorage.getItem('username') : '';
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleClose = (e: React.MouseEvent<HTMLElement>) => {
+  const handleClose = () => {
     setAnchorEl(null);
   };
 
@@ -38,13 +37,15 @@ const Header = ({ title, isHome = false }: HeaderProps) => {
     setAnchorElTwo(event.currentTarget);
   };
 
-  const handleCloseTwo = (e: React.MouseEvent<HTMLElement>) => {
+  const handleCloseTwo = () => {
     setAnchorElTwo(null);
   };
 
   const handleLogout = () => {
-    sessionStorage.removeItem('token');
-    sessionStorage.removeItem('user');
+    if (typeof window !== 'undefined') {
+      sessionStorage.removeItem('token');
+      sessionStorage.removeItem('user');
+    }
     router.push('/login');
   };
 

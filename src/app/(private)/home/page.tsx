@@ -28,7 +28,7 @@ const CenteredBox = styled(Box)`
   font-family: 'Poppins';
 `
 
-const page = () => {
+const Page = () => {
   const { fetchCompanies, companies } = useCompanyStore();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
@@ -201,4 +201,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

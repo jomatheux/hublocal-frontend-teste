@@ -1,3 +1,5 @@
+'use client'
+
 import Grid from '@mui/material/Grid'
 import Box from '@mui/material/Box'
 import Image from 'next/image'
