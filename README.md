@@ -1,5 +1,20 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+
+## Project setup
+
+First, configure your project:
+
+```bash
+ENV config:
+
+NEXT_PUBLIC_API_BASE_URL= // Backend url api
+
+Install packages:
+
+npm install
+```
+
 ## Getting Started
 
 First, run the development server:
