@@ -36,7 +36,7 @@ export const apiFetch = async (
   } catch (error: AxiosError | Error | unknown) {
     if (error instanceof AxiosError && error.response?.status === 401) {
       const currentPath = window.location.pathname;
-      if (currentPath !== "/login") {
+      if (currentPath !== "/login" && currentPath !== "/register") {
         window.location.href = "/login";
       }
       UseToast(error.response.data.message, "error");

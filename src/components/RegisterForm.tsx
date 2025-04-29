@@ -41,8 +41,6 @@ const RegisterForm = () => {
             router.push('/login');
         } catch (error: Error | unknown) {
             console.error('Registration failed:', error);
-            UseToast(error instanceof Error ? error.message : String(error), "error");
-            alert('Erro ao realizar cadastro!');
         }
     };
 
