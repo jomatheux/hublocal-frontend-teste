@@ -9,6 +9,7 @@ export const apiFetch = async (
   data?: object,
   contentType: string = 'application/json'
 ) => {
+  const cleanEndpoint = endpoint.trim();
   let token;
   try {
     token = typeof window !== "undefined" ? sessionStorage.getItem("token") : null;
@@ -19,7 +20,7 @@ export const apiFetch = async (
   try {
     const res: AxiosResponse = await axios({
       method,
-      url: `${API_BASE_URL}${endpoint}`,
+      url: `${API_BASE_URL}${cleanEndpoint}`,
       data,
       headers: {
         'Content-Type': contentType,
